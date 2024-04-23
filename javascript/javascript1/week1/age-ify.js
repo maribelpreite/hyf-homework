@@ -4,8 +4,8 @@
 
 // Log out this string: "You will be 40 years old in 2027". With 40 being the result of the age variable and 2027 being the yearFuture variable. (Hint use string concatenation)
 
-let yearOfBirth = 1999;
-let yearFuture = 2043;
+const yearOfBirth = 1999;
+const yearFuture = 2043;
 
 let age = yearFuture - yearOfBirth;
 
