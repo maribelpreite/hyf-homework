@@ -41,7 +41,7 @@ const secondWords = [
 const randomNumberFirstWord = Math.floor(Math.random(firstWords) * 10);
 const randomNumberSecondWord = Math.floor(Math.random(secondWords) * 10);
 
-let newStartupName = firstWords[randomNumberFirstWord] + " " + secondWords[randomNumberSecondWord];
-let characterCounter = firstWords[randomNumberFirstWord].length + 1 + secondWords[randomNumberSecondWord].length
+const newStartupName = firstWords[randomNumberFirstWord] + " " + secondWords[randomNumberSecondWord];
+const characterCounter = firstWords[randomNumberFirstWord].length + 1 + secondWords[randomNumberSecondWord].length
 
 console.log('The startup: "' + newStartupName + '" contains ' + characterCounter + ' characters.')

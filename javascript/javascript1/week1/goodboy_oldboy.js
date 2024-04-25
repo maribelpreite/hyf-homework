@@ -5,8 +5,8 @@
 const dogYearOfBirth = 2021;
 const dogYearFuture = 2029;
 
-let dogYear = dogYearFuture - dogYearOfBirth;
-let shouldShowResultInDogYears = false;
+const dogYear = dogYearFuture - dogYearOfBirth;
+const shouldShowResultInDogYears = false;
 
 let yearsType; 
 

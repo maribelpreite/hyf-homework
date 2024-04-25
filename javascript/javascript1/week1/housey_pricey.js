@@ -17,8 +17,8 @@ const houseHight = 10;
 const gardenSizeInM2 = 100;
 const pays = 2500000;
 
-let volumeInMeters = houseWidth * houseDepth * houseHight;
-let housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300;
+const volumeInMeters = houseWidth * houseDepth * houseHight;
+const housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300;
 
 let amountDescription;
 
@@ -39,8 +39,8 @@ const houseHight2 = 8;
 const gardenSizeInM22 = 70;
 const pays2 = 1000000;
 
-let volumeInMeters2 = houseWidth2 * houseDepth2 * houseHight2;
-let housePrice2 = volumeInMeters2 * 2.5 * 1000 + gardenSizeInM22 * 300;
+const volumeInMeters2 = houseWidth2 * houseDepth2 * houseHight2;
+const housePrice2 = volumeInMeters2 * 2.5 * 1000 + gardenSizeInM22 * 300;
 
 let amountDescription2;
 
