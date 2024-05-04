@@ -12,5 +12,11 @@ function whatToWearBasedOnTemp (temperature) {
     }
 }
 
-const clothesToWear = whatToWearBasedOnTemp(18);
-console.log("You should put on " + clothesToWear);
+function randomTemperature (min, max) {
+    return Math.random (max-min) + min;
+}
+
+let currentTemperature = randomTemperature(-20, 50);
+const clothesToWear = whatToWearBasedOnTemp(currentTemperature);
+
+console.log(`You should put on ${clothesToWear}. The temperature outside is ${currentTemperature}`);

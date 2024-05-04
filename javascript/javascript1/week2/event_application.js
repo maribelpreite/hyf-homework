@@ -1,16 +1,17 @@
 const daysSinceToday = [
-    "Thursday",
-    "Friday",
-    "Saturday",
     "Sunday",
     "Monday",
     "Tuesday",
-    "Wednesday"
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
 ]
 
 function getEventWeekday(number) {
-    return daysSinceToday[number%7];
+    const todayIs = new Date().getDay();
+    console.log(`It will be ${daysSinceToday[(todayIs + number)%7]} in ${number} days`);
 }
 
-console.log(getEventWeekday(9));
-console.log(getEventWeekday(2));
+getEventWeekday(10);
+getEventWeekday(2);
