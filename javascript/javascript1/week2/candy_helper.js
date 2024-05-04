@@ -22,12 +22,10 @@ function totalPrice() {
 addCandy("chewing-gum", 30);
 addCandy("sweet", 20);
 addCandy("toffee", 40);
-console.log(boughtCandies);
 totalPrice();
 
-const amountToSpend = Math.random() * 100;
-
 function canBuyMoreCandy() {
+  const amountToSpend = Math.random() * 100;
   if (amountToSpend > totalAmount) {
     console.log(
       `You have $ ${amountToSpend}. You can buy more, so please do!`

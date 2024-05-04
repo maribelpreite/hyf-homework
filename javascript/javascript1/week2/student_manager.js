@@ -4,7 +4,7 @@ function addStudentToClass(studentName) {
         console.log(`Cannot add more students to class 07`);
     } else if (class07Students.includes(studentName)) {
         console.log(`Student ${studentName} is already in the class`);
-    } else if (studentName === "") {
+    } else if (studentName.trim() === "") {
         console.log(`Please add the student's name`); 
     } else {
         class07Students.push(studentName);
