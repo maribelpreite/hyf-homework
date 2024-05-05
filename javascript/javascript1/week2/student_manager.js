@@ -2,6 +2,7 @@ const class07Students = ["Anna", "Jonas", "Micah", "Noah", "Louise", "Jonathan",
 
 function maxNumberOfStudents () {
     return class07Students.splice(6, class07Students.length -1);
+    // class07Students.length = 6;
 }
 
 function addStudentToClass(studentName) {
