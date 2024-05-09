@@ -14,7 +14,7 @@ const names = [
   const end = 1;
 
   //LOGIC
-  const nameToRemove = names.splice(start, end); // I know that I can simply put 1,1 insid here, but I wanted to separate data from logic as muchas as possible
+  const nameToRemove = names.splice(start, end); // I know that I can simply put 1,1 inside here, but I wanted to separate data from logic as much as possible
 
   // RENDER
   console.log(names);
