@@ -1,19 +1,27 @@
 const smartPhoneActivities = [];
 const usageLimit = 120;
 
-function addActivity(date, activity, duration, activities) {
-    if (typeof date !== "string") {
-        console.log("DATE MUST BE A STRING!");
-        return;
-    } else if (typeof activity !== "string") {
-        console.log("ACTIVITY MUST BE A STRING!");
-        return;
-    } else if (typeof duration !== "number") {
-        console.log("DURATION MUST BE A NUMBER!");
+function addActivity(activity, duration, activities) {
+    const errorMessages = [];
+    const errorMessage = [
+        "ACTIVITY MUST BE A STRING!",
+        "DURATION MUST BE A NUMBER!",
+    ]
+
+    if (typeof activity !== "string") {
+        errorMessages.push(errorMessage[0]);
+    } 
+    
+    if (typeof duration !== "number") {
+        errorMessages.push(errorMessage[1]);
+    } 
+    
+    if (errorMessages.length > 0) {
+        console.log(errorMessages);
         return;
     } else {
         activities.push({
-            date: date,
+            date: new Date().toLocaleDateString("en-GB"),
             activity: activity,
             duration: duration
         })
@@ -21,9 +29,14 @@ function addActivity(date, activity, duration, activities) {
 }
 
 function timeSpent(activities) {
+    const today = new Date ();
+    const todayDate = today.toLocaleDateString("en-GB");
+
     let totalDuration = 0;
     for (let i = 0; i<activities.length; i++) {
-    totalDuration += activities[i]["duration"];
+        if (activities[i]["date"] === todayDate) {
+            totalDuration += activities[i]["duration"];
+        }
     }
     return totalDuration;
 }
@@ -45,25 +58,28 @@ function showStatus (activities, limit) {
     }
 }
 
-addActivity("10-05-2023", "Youtube", 30, smartPhoneActivities);
-addActivity("10-05-2023", "Instagram", 95, smartPhoneActivities);
+addActivity("Youtube", 30, smartPhoneActivities);
+addActivity("Instagram", 95, smartPhoneActivities);
 console.log(smartPhoneActivities);
 showStatus(smartPhoneActivities, usageLimit);
 
 
-// EXTRA FEATURE: WHAT APP DID YOU USE THE MOST?
+// OPTIONAL: WHAT APP DID YOU USE THE MOST?
 
-function appBalance(activities) {
+function appDurations (activities) {
     const eachAppTime = {};
-    let total
     for (let i = 0; i<activities.length; i++) {
         const appName = activities[i].activity;
         const appTime = activities[i].duration;
         eachAppTime[appName] = appTime;
     }
-
+    return eachAppTime;
+}
+function appBalance(activities) {
+    
     let mostTimeSpent = -Infinity;
     let mostUsedApp = "";
+    const eachAppTime = appDurations(activities);
 
     for (const appName in eachAppTime) {
         const value = eachAppTime[appName];
@@ -79,9 +95,34 @@ function appBalance(activities) {
     return {mostUsedApp, mostUsedAppPercentage};
 }
 
-function present(balance) {
-    console.log(`Your most used app today was ${balance.mostUsedApp}. That's ${balance.mostUsedAppPercentage}% of yor screen time.`)
+function balancePresent(balance) {
+    console.log(`Your most used app today was ${balance.mostUsedApp}. That's ${balance.mostUsedAppPercentage}% of your total screen time.`)
 }
 
 const balance = appBalance(smartPhoneActivities);
-present(balance);
+balancePresent(balance);
+
+// EXTRA FEATURE: SINGLE APP STATISTICS
+function appStatistics (activities, specificApp) {
+    const eachAppTime = appDurations(activities);
+
+    if (eachAppTime.hasOwnProperty(specificApp)) {
+        const appTime = eachAppTime[specificApp];
+        const totalTime = timeSpent(activities);
+        const appTimePercentage = appTime/totalTime*100;
+        return {specificApp, appTime, appTimePercentage};
+    } else {
+        return specificApp;
+    }
+}
+
+function statisticsPresent(statistics) {
+    if (typeof statistics === "object") {
+        console.log(`You spent ${statistics.appTime} minutes on ${statistics.specificApp} today. That's ${statistics.appTimePercentage}% of your total screen time.`);
+    } else {
+        console.log(`The required application ${statistics.specificApp} has not been used today.`);
+    }
+}
+
+const statistics = appStatistics(smartPhoneActivities, "Youtube");
+statisticsPresent(statistics);
