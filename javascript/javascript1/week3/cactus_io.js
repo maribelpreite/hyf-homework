@@ -35,7 +35,7 @@ function timeSpent(activities) {
     let totalDuration = 0;
     for (let i = 0; i<activities.length; i++) {
         if (activities[i]["date"] === todayDate) {
-            totalDuration += activities[i]["duration"];
+            totalDuration += activities[i].duration;
         }
     }
     return totalDuration;
