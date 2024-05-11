@@ -35,7 +35,7 @@ for (let i = 0; i<seriesDurations.length; i++) {
         seriesInDays += (seriesDurations[i][timeProperties[j]])/timeConverter[j];
     }
 
-    let eachSeriesTitle = seriesDurations[i]["title"];
+    let eachSeriesTitle = seriesDurations[i].title;
     let eachSeriesPercentage = (seriesInDays/lifeDays*100).toFixed(3);
 
     percentageBySeriesDays[eachSeriesTitle] = eachSeriesPercentage;
