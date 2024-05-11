@@ -75,6 +75,7 @@ function appDurations (activities) {
     }
     return eachAppTime;
 }
+
 function appBalance(activities) {
     
     let mostTimeSpent = -Infinity;
