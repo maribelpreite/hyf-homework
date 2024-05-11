@@ -30,7 +30,7 @@ function addActivity(activity, duration, activities) {
 
 function timeSpent(activities) {
     const today = new Date ();
-    const todayDate = today.toLocaleDateString("en-GB");
+    const todayDate = new Date().toLocaleDateString("en-GB");
 
     let totalDuration = 0;
     for (let i = 0; i<activities.length; i++) {
