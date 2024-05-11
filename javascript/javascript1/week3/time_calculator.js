@@ -6,7 +6,7 @@ const travelData = {
 
   // LOGIC
 function estimatedTime(travelInformation, speed, destinationDistance) {
-    const timeFloat = travelInformation["destinationDistance"]/travelInformation["speed"];
+    const timeFloat = travelInformation.destinationDistance / travelInformation.speed;
     const hour = Math.floor(timeFloat);
     const minutesFloat = (timeFloat - hour) * 60;
     const minutes = Math.round(minutesFloat);
