@@ -48,7 +48,7 @@ function showStatus (activities, limit) {
     } 
 
     const totalTime = timeSpent(activities);
-    const amountOfActivities = activities.length
+    const amountOfActivities = activities.length;
     const amountOfActivitieString = amountOfActivities > 1 ? `${amountOfActivities} activities. They amount to` : `${amountOfActivities} activity. It amounts to`;
 
     console.log(`You have added ${amountOfActivitieString} ${totalTime} min. of usage.`)
