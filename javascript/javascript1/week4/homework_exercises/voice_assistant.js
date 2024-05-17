@@ -74,7 +74,7 @@ function getReply (command) {
         
     }
 
-    //do math: had to google how to find a number and operator within a string
+    //generic functions to find a number and operator within a string for the following 2 features
     function includesNumber(lowCaseCommand) {
         const regex = /\d/;
         return regex.test(lowCaseCommand);
@@ -90,18 +90,50 @@ function getReply (command) {
         return lowCaseCommand.match(regex).join("");
     }
 
-    if (includesNumber(lowCaseCommand) && includesMathOperator(lowCaseCommand)) {
+    function extractNumber(lowCaseCommand) {
+        const regex = /\d+/;
+        return lowCaseCommand.match(regex);
+    }
+
+    //do simple math operations
+    if (includesNumber(lowCaseCommand) && includesMathOperator(lowCaseCommand) && !lowCaseCommand.includes("timer")) {
         const mathOperationString = extractMathExpression(lowCaseCommand);
         const mathOperationNumber = eval(mathOperationString);
         return mathOperationNumber;
-    }
+    } 
 
     //timer
     if (lowCaseCommand.includes("set") && lowCaseCommand.includes("timer") && includesNumber(lowCaseCommand)) {
-        // still have to finish this one
-    }
+        let timeValue = parseInt(extractNumber(lowCaseCommand)[0]);
+        let timeExpression = "seconds"
+        let timeInterval = 1000;
+        
+        // changing the timer function depending on minutes or seconds
+        if (lowCaseCommand.includes("minute") || lowCaseCommand.includes("minutes")) {
+            timeExpression = timeValue > 1 ? 'minutes' : 'minute';
+            timeInterval *= 60;
+        } 
 
+        function countdown(time, interval) {
+            function displayTime() {
+                //console.log(time);
+                time--;
+                
+        
+                if (time < 0) {
+                    console.log("Time's up!");
+                    clearInterval(timerId);
+                }
+                
+            }
+            const timerId = setInterval(displayTime, interval);
+        } 
+        countdown(timeValue, timeInterval);
+        return `Timer set to ${timeValue} ${timeExpression}`;
+    } 
+    
     return "Command not recognized"
+    
 }
 
 
@@ -122,6 +154,8 @@ const messages = [
     "Calculate 12 / 4",
     "How much is 6 * 7?",
     "Find the result of 10 % 3",
+    "Set a timer for 10 seconds",
+    //"Set a timer for 1 minute",
 ]
 
 messages.forEach(message => {
