@@ -74,7 +74,8 @@ function getReply (command) {
         
     }
 
-    //generic functions to find a number and operator within a string for the following 2 features
+    //after seeing that i couldn't use the .includes() method to look for numbers within a string, i found out about .match(), .test() and regexp. i know realized that i could've done that throughout the whole exercise :/
+    
     function includesNumber(lowCaseCommand) {
         const regex = /\d/;
         return regex.test(lowCaseCommand);
