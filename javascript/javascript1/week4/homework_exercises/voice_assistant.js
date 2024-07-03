@@ -75,7 +75,7 @@ function getReply (command) {
     }
 
     //after seeing that i couldn't use the .includes() method to look for numbers within a string, i found out about .match(), .test() and regexp. i know realized that i could've done that throughout the whole exercise :/
-    
+
     function includesNumber(lowCaseCommand) {
         const regex = /\d/;
         return regex.test(lowCaseCommand);
@@ -117,7 +117,7 @@ function getReply (command) {
 
         function countdown(time, interval) {
             function displayTime() {
-                //console.log(time);
+                console.log(time);
                 time--;
                 
         
