@@ -8,12 +8,12 @@ FROM task
 WHERE due_date IS NULL;
 
 SELECT *
-FROM task
-WHERE status_id = (SELECT id FROM status WHERE name = 'Done');
+FROM task JOIN status
+ON status.name ='Done';
 
 SELECT *
-FROM task
-WHERE status_id != (SELECT id FROM status WHERE name = 'Done');
+FROM task JOIN status
+ON status.name != 'Done';
 
 SELECT *
 FROM task
