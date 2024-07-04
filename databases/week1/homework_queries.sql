@@ -28,3 +28,17 @@ SELECT title, due_date
 FROM task
 WHERE title LIKE '%database%' OR description LIKE '%database%';
 
+SELECT t.title, s.name AS status
+FROM task t
+INNER JOIN status s ON t.status_id = s.id;
+
+SELECT s.name AS status_name, COUNT(*) AS task_count
+FROM task t
+INNER JOIN status s ON t.status_id = s.id
+GROUP BY s.name;
+
+SELECT s.name AS status_name, COUNT(*) AS task_count
+FROM task t
+INNER JOIN status s ON t.status_id = s.id
+GROUP BY s.name
+ORDER BY task_count DESC;
