@@ -9,5 +9,10 @@
         "id": 2,
         "type": "doc",
         "value": "hello world"
+    },
+    {
+        "id": 12,
+        "type": "pdf",
+        "value": "cv"
     }
 ]

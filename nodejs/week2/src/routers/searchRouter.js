@@ -7,20 +7,18 @@ searchRouter.get("/", async (req, res) => {
   try {
     const document = await readJSONFile("./src/documents.json");
     const query = req.query.q;
+    let filteredSearch = [];
 
     if (query) {
-      const filteredSearch = document.filter((obj) => {
+      filteredSearch = document.filter((obj) => {
         return Object.values(obj).some((value) => {
-          if (typeof value === "string") {
-            return value.toLowerCase().includes(query.toLowerCase());
-          }
-          return false;
+            return typeof value === 'string' && value.toLowerCase().includes(query.toLowerCase());
         });
       });
-      res.json(filteredSearch);
     } else {
-      res.json(document);
+      filteredSearch = document;
     }
+    res.json(filteredSearch);
   } catch (error) {
     console.error(
       "Something went wrong while trying to search for your document:",
